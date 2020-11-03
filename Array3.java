@@ -19,9 +19,26 @@ public class Array3 {
 //			System.out.printf("nums = %s : %d\n", ats(nums), m.maxSpan(nums));
 //		}
 		
-		int[][] nums2 = { {1,3,1,4}, {1,3,1,4,4,3,1}, {3,2,2,4} };
-		for ( int[] nums : nums2 ) {
-			System.out.printf("nums = %s : %s\n", ats(nums), ats(m.fix34(nums)));
+//		int[][] nums2 = { {1,3,1,4}, {1,3,1,4,4,3,1}, {3,2,2,4} };
+//		for ( int[] nums : nums2 ) {
+//			System.out.printf("nums = %s : %s\n", ats(nums), ats(m.fix34(nums)));
+//		}
+		
+//		int[][] nums3 = { {5,4,9,4,9,5}, {1,4,1,5}, {1,4,1,5,5,4,1}, {5,5,4,1,4,1}, {5,4,5,4,1},
+//				{4,9,4,9,5,5,4,9,5} };
+//		for ( int[] nums : nums3 ) {
+//			System.out.printf("nums = %s : %s\n", ats(nums), ats(m.fix45(nums)));
+//		}
+		
+//		int[][] nums4 = { {1,1,1,2,1}, {2,1,1,2,1}, {10,10} };
+//		for ( int[] nums : nums4 ) {
+//			System.out.printf("nums = %s : %b\n", ats(nums), m.canBalance(nums));
+//		}
+		
+		int[][][] nums5 = { { {1,2,4,6}, {2,4} }, { {1,2,4,6}, {2,3,4} }, { {1,2,4,4,6}, {2,4} } };
+		for ( int[][] nums : nums5 ) {
+			System.out.printf("outer = %s, inner = %s : %b\n", ats(nums[0]), ats(nums[1]),
+					m.linearIn(nums[0], nums[1]));
 		}
 		
 	}
