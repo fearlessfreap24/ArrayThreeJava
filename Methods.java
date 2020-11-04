@@ -48,27 +48,115 @@ public class Methods {
 //		fix34([1, 3, 1, 4, 4, 3, 1]) → [1, 3, 4, 1, 1, 3, 4]
 //		fix34([3, 2, 2, 4]) → [3, 4, 2, 2]
 		
-		int[] fixthreefour = new int[nums.length];
-		
-		String three = "";
-		String four = "";
-		
-		for ( int i = 0; i < nums.length; i++ ) {
-			if ( nums[i] == 3 ) three += i + ",";
-			if ( nums[i] == 4 ) four += i + ",";
-		}
-		
-		String[] arr3 = three.split(",");
-		String[] arr4 = four.split(",");
-		for ( int j = 0; j < arr3.length; j++ ) {
-			int arr3j = Integer.parseInt(arr3[j]);
-			int arr4j = Integer.parseInt(arr4[j]);
-			for ( int k = 0; k < nums.length; k++ ) {
-				fixthreefour[k] = nums[k];
+		for ( int i = 0; i < nums.length; i++ ){
+			if ( nums[i] == 3 ){
+				for ( int j = 0; j < nums.length; j++ ) {
+					if ( nums[j] == 4 && nums[j-1] != 3 ){
+						int temp = nums[i+1];
+						nums[i+1] = nums[j];
+						nums[j] = temp;
+					}
+				}
 			}
 		}
-		
-		return fixthreefour;
+		return nums;
 	}
 
+	public int[] fix45(int[] nums) {
+
+//		(This is a slightly harder version of the fix34 problem.) Return an array that contains exactly the same numbers
+//		as the given array, but rearranged so that every 4 is immediately followed by a 5. Do not move the 4's, but every
+//		other number may move. The array contains the same number of 4's and 5's, and every 4 has a number after it that
+//		is not a 4. In this version, 5's may appear anywhere in the original array.
+//
+//		fix45([5, 4, 9, 4, 9, 5]) → [9, 4, 5, 4, 5, 9]
+//		fix45([1, 4, 1, 5]) → [1, 4, 5, 1]
+//		fix45([1, 4, 1, 5, 5, 4, 1]) → [1, 4, 5, 1, 1, 4, 5]
+
+		for ( int i = 0; i < nums.length; i++ ) {
+			if ( nums[i] == 4 ) {
+				for ( int j = 0; j < nums.length; j++ ) {
+					if ( nums[j] == 5 && j == 0 ) {
+						int temp = nums[i+1];
+						nums[i+1] = nums[j];
+						nums[j] = temp;
+						break;
+					}
+					else if ( nums[j] == 5 && nums[j-1] != 4 ) {
+						int temp = nums[i+1];
+						nums[i+1] = nums[j];
+						nums[j] = temp;
+						break;
+					}
+				}
+			}
+		}
+
+		return nums;
+	}
+
+	public boolean canBalance(int[] nums) {
+
+//		Given a non-empty array, return true if there is a place to split the array so that the sum of the numbers on one
+//		side is equal to the sum of the numbers on the other side.
+//
+//		canBalance([1, 1, 1, 2, 1]) → true
+//		canBalance([2, 1, 1, 2, 1]) → false
+//		canBalance([10, 10]) → true
+
+		if ( nums.length < 2 ) return false;
+		if ( nums.length == 2 ) return nums[0] == nums[1];
+
+		for ( int j = 1; j < nums.length; j++ ) {
+			int forward = 0;
+			int backward = 0;
+
+			for ( int k = 0; k < j; k++ ) forward += nums[k];
+			for ( int l = nums.length - 1; l >= j; l-- ) backward += nums[l];
+
+			if ( backward == forward ) return true;
+		}
+
+		return false;
+	}
+
+	public boolean linearIn(int[] outer, int[] inner) {
+
+//		Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner
+//		appear in outer. The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact
+//		that both arrays are already in sorted order.
+//
+//		linearIn([1, 2, 4, 6], [2, 4]) → true
+//		linearIn([1, 2, 4, 6], [2, 3, 4]) → false
+//		linearIn([1, 2, 4, 4, 6], [2, 4]) → true
+
+		int innerLength = inner.length;
+		int tracker = 0;
+		for ( int i = 0; i < outer.length; i++ ) {
+			if ( tracker > innerLength - 1 ) break;
+			else if ( outer[i] == inner[tracker] ) {
+//				System.out.printf("outer[i] = %d, tracker = %d, inner[tracker] = %d\n", outer[i], tracker, inner[tracker]);
+				tracker++;
+			}
+		}
+
+		return tracker == innerLength;
+	}
+
+	public int[] squareUp(int n) {
+
+//		Given n>=0, create an array length n*n with the following pattern, shown here for n=3 : {0, 0, 1,    0, 2, 1,
+//		3, 2, 1} (spaces added to show the 3 groups).
+//
+//		squareUp(3) → [0, 0, 1, 0, 2, 1, 3, 2, 1]
+//		squareUp(2) → [0, 1, 2, 1]
+//		squareUp(4) → [0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1]
+
+		int[] squareup = new int[n*n];
+		for ( int i = 0; i < squareup.length; i++ ){
+
+		}
+
+		return squareup;
+	}
 }
