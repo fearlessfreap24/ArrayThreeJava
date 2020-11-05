@@ -153,7 +153,16 @@ public class Methods {
 //		squareUp(4) → [0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1]
 
 		int[] squareup = new int[n*n];
-		for ( int i = 0; i < squareup.length; i++ ){
+		for ( int i = 0; i < n; i++ ){
+			int count = 1;
+			for ( int j = n-1; j >= 0; j-- ) {
+				if ( count > i + 1 ) break;
+				else {
+					squareup[(i*n)+j] = count;
+					count++;
+				}
+				
+			}
 
 		}
 
