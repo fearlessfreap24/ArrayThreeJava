@@ -40,9 +40,14 @@ public class Array3 {
 //					m.linearIn(nums[0], nums[1]));
 //		}
 
-		int[] nums6 = {3,2,4};
-		for ( int n : nums6 ) {
-			System.out.printf("n = %d : %s\n", n, ats(m.squareUp(n)));
+//		int[] nums6 = {3,2,4};
+//		for ( int n : nums6 ) {
+//			System.out.printf("n = %d : %s\n", n, ats(m.squareUp(n)));
+//		}
+		
+		int[] nums7 = {3,4,2};
+		for ( int n : nums7 ) {
+			System.out.printf("n = %d : %s\n", n, ats(m.seriesUp(n)));
 		}
 		
 	}
